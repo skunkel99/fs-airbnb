@@ -8,19 +8,30 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>Explore Trips:</ion-list>
-  <div padding>
-      <ion-button expand="full" (click)="navToExplore()">Explore Homes</ion-button>
+    <ion-item>
+        Upcoming Trips:
+      </ion-item>
+      <ion-text>
+        No Upcoming Trips!
+        </ion-text>
+
+  <div>
+      <ion-button expand="full" (click)="navToExplore()" shape="round">Explore Homes</ion-button>
   </div>
 
 
-    <ion-list>
-      <ion-item> 
-        <ion-label>   Current Trip: </ion-label>
-        <ion-button expand="full" (click)="navToExploreCurrent()">Lisbon, Portugal</ion-button>
-      </ion-item>
-    </ion-list>
-     
+  <ion-item>
+      Where you've been:
+    </ion-item>
+
+  <div *ngFor="let trip of trips">
+      <ion-card>
+        <ion-card-content>
+            <img src ="{{trip.imgurl}}" (click)="navToDetails()">
+            {{trip.housename}} in {{trip.destination}}
+        </ion-card-content> 
+      </ion-card>
+    </div>
 
 
 </ion-content>

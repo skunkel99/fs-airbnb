@@ -7,7 +7,17 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content></ion-content>
+  <ion-content padding>
+    <div *ngFor="let rental of rentals">
+    <ion-card>
+      <ion-card-content>
+          <img src ="{{rental.imgurl}}" (click)="navToDetails()">
+          {{rental.housename}} in {{rental.destination}}
+      </ion-card-content> 
+    </ion-card>
+  </div>
+
+  </ion-content>
   
   
   
