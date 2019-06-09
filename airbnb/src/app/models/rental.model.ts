@@ -1,16 +1,20 @@
 export class rental {
-    public destination: string;
-    public nightprice: number;
-    public hostname: string;
-    public housename: string;
-    public imgurl: string;
+    public location: string;
+    public pricePerNight: number;
+    public hostName: string;
+    public houseName: string;
+    public imageUrl: string;
+    public id: number;
+    public providerId: number;
 
 
     constructor() {
-        this.destination = "";
-        this.nightprice = 0;
-        this.hostname = "";
-        this.housename = "";
-        this.imgurl = "";
+        this.location = "";
+        this.pricePerNight = 0;
+        this.hostName = "";
+        this.houseName = "";
+        this.imageUrl = "";
+        this.id = 0;
+        this.providerId = 0;
     }
 }

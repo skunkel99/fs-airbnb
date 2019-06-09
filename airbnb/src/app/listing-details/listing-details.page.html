@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Listing details</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="tabs"></ion-back-button>
+  </ion-buttons>
+  <ion-title *ngIf="currentListing">
+    {{currentListing.housename}} in {{currentListing.destination}}
+  </ion-title>
+</ion-toolbar>
 
-</ion-content>
+<ion-content></ion-content>

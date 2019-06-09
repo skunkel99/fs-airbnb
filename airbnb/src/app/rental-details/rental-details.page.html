@@ -2,7 +2,19 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="tabs"></ion-back-button>
     </ion-buttons>
-    <ion-title>Rental Details</ion-title>
+    <ion-title *ngIf="currentProperty">
+      {{currentProperty.houseName}} in {{currentProperty.location}}
+    </ion-title>
   </ion-toolbar>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-card *ngIf="currentProperty">
+        <ion-img src="{{currentProperty.imageUrl}}"></ion-img>
+      </ion-card> 
+
+      <ion-title *ngIf="currentProperty">${{currentProperty.pricePerNight}} per night</ion-title> 
+
+      <div padding>
+          <ion-button expand="full" (click)="navToBooking()">Book Listing!</ion-button>
+      </div> 
+</ion-content>

@@ -7,6 +7,9 @@ const routes: Routes = [
   { path: 'explore', loadChildren: './tab1/tab1.module#Tab1PageModule' },
   { path: 'rental-details', loadChildren: './rental-details/rental-details.module#RentalDetailsPageModule' },
   { path: 'listing-details', loadChildren: './listing-details/listing-details.module#ListingDetailsPageModule' },
+  {path: 'register', loadChildren: './register/register.module#RegisterPageModule'},
+  { path: 'booking', loadChildren: './booking/booking.module#BookingPageModule' },
+
 ];
 @NgModule({
   imports: [

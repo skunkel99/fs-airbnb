@@ -24,14 +24,20 @@
       Where you've been:
     </ion-item>
 
-  <div *ngFor="let trip of trips">
-      <ion-card>
-        <ion-card-content>
-            <img src ="{{trip.imgurl}}" (click)="navToDetails()">
-            {{trip.housename}} in {{trip.destination}}
-        </ion-card-content> 
-      </ion-card>
-    </div>
 
+
+    <ion-grid text-center>
+      <ion-row wrap>
+        <ion-col> <div *ngFor="let rental of trips">
+            <ion-card>
+              <ion-card-content>
+                  <img src ="{{rental.imgurl}}" (click)="navToDetails(rental)">
+                  {{rental.dateFrom}} to {{rental.dateTo}}
+              </ion-card-content> 
+            </ion-card>
+          </div></ion-col>
+    
+      </ion-row>
+    </ion-grid>
 
 </ion-content>

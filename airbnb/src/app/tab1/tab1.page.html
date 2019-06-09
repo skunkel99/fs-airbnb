@@ -8,16 +8,24 @@
   </ion-header>
   
   <ion-content padding>
-    <div *ngFor="let rental of rentals">
-    <ion-card>
-      <ion-card-content>
-          <img src ="{{rental.imgurl}}" (click)="navToDetails()">
-          {{rental.housename}} in {{rental.destination}}
-      </ion-card-content> 
-    </ion-card>
-  </div>
+  
 
+  <ion-grid text-center>
+      <ion-row wrap>
+        <ion-col> <div *ngFor="let rental of rentals">
+            <ion-card>
+              <ion-card-content>
+                  <img src ="{{rental.imageUrl}}" (click)="navToDetails(rental)">
+                  {{rental.houseName}} in {{rental.location}}
+              </ion-card-content> 
+            </ion-card>
+          </div></ion-col>
+    
+      </ion-row>
+    </ion-grid>
   </ion-content>
+
+ 
   
   
   

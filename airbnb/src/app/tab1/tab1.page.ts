@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+ import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller';
+import { RentalService } from '../services/rental.service';
 
 import { rental } from '../models/rental.model';
+import { HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-tab1',
@@ -10,24 +13,30 @@ import { rental } from '../models/rental.model';
 })
 export class Tab1Page {
 
-  public rentals: Array<rental> = new Array();
+public rentals: Array<rental> = new Array();
+public Rental: rental = new rental();
 
 
-
-
-  constructor(private navCtrl: NavController) {
-    let rental1 = new rental();
-    rental1.destination = "Nashville, Tennessee";
-    rental1.nightprice = 50;
-    rental1.hostname = "Danny Davito";
-    rental1.housename = "Southern Ranch";
-    rental1.imgurl = "https://scontent.fopo2-2.fna.fbcdn.net/v/t31.0-8/19956042_10155387304412508_1960536314481010818_o.jpg?_nc_cat=110&_nc_ht=scontent.fopo2-2.fna&oh=6e160c1b5b119ebcc24c33b4aabb0fb5&oe=5D9ADAA1";
-    this.rentals.push(rental1);
-
+  constructor(private navCtrl: NavController, private propertyService: RentalService, private httpClient: HttpClient) {
+    this.httpClient.get("http://localhost:3000/properties/allproperties").subscribe((response) => {
+      this.rentals = JSON.parse(JSON.stringify(response));
+      for( var k = 0; k < this.rentals.length; k++) {
+        this.rentals[0].imageUrl = response[0].imageUrl;
+        this.rentals[0].houseName = response[0].houseName;
+        this.rentals[0].hostName = response[0].hostName;
+        this.rentals[0].location = response[0].location;
+      }
+    })
   }
 
-  navToDetails() {
-    this.navCtrl.navigateForward("listing-details");
+  navToDetails(rentalObj: rental) {
+    let navOptions: NavigationOptions = {
+      queryParams: {
+        q: "ionic",
+        propertyID: rentalObj.id
+       }
+      };
+       this.navCtrl.navigateForward("rental-details", navOptions);
   }
 
 }
